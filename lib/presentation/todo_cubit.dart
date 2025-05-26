@@ -11,7 +11,7 @@ import 'package:todo_app_clean_architecture/domain/repository/todo_repo.dart';
 
 class TodoCubit extends Cubit<List<Todo>>{
   //Reference to the todo repo
-  final TodoRepository todoRepository;
+  final TodoRepo todoRepository;
 
   //constructor initializes the cubit with an empty list of todos
   TodoCubit(this.todoRepository) : super([]){

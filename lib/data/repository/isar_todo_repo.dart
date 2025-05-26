@@ -11,47 +11,45 @@ import 'package:todo_app_clean_architecture/data/models/isar_todo.dart';
 import 'package:todo_app_clean_architecture/domain/models/todo.dart';
 import 'package:todo_app_clean_architecture/domain/repository/todo_repo.dart';
 
-class IsarTodoRepo implements TodoRepository{
-
-  //database
+class IsarTodoRepo implements TodoRepo {
+  // database
   final Isar db;
+
   IsarTodoRepo(this.db);
 
-  //get todos
+  // get todos
   @override
   Future<List<Todo>> getTodos() async {
-    //fetch todos from the db
+    // fetch from db
     final todos = await db.todoIsars.where().findAll();
-    //return as a list of todo and give to domain layer
-    return todos.map((e) => e.toDomain()).toList();
+
+    // return as a list of todos and give to domain layer
+    return todos.map((todoIsar) => todoIsar.toDomain()).toList();
   }
 
-  //add todo
+  // add todo
   @override
   Future<void> addTodo(Todo newTodo) async {
-    //convert todo to isar object
+    // convert todo into isar todo
     final todoIsar = TodoIsar.fromDomain(newTodo);
 
-    //so that we can store it in our isar db
-    return db.writeTxn(()=>db.todoIsars.put(todoIsar));
+    // so that we can store it in our isar db
+    return db.writeTxn(() => db.todoIsars.put(todoIsar));
   }
 
-
-  //uodate todo
+  // update todo
   @override
-  Future<void> updateTodo(Todo todo) async {
-    //convert todo to isar object
-    final isarTodo = TodoIsar.fromDomain(todo);
+  Future<void> updateTodo(Todo todo) {
+    // convert todo into isar todo
+    final todoIsar = TodoIsar.fromDomain(todo);
 
-    //so that we can store it in our isar db
-    return db.writeTxn(()=>db.todoIsars.put(isarTodo));
+    // so that we can store it in our isar db
+    return db.writeTxn(() => db.todoIsars.put(todoIsar));
   }
 
-  //delete todo
+  // delete todo
   @override
   Future<void> deleteTodo(Todo todo) async {
-    await db.writeTxn(()=>db.todoIsars.delete(todo.id));
+    await db.writeTxn(() => db.todoIsars.delete(todo.id));
   }
-
-
 }
