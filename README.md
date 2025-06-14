@@ -1,16 +1,36 @@
-# todo_app_clean_architecture
+# Todo App Clean Architecture
 
-A new Flutter project.
 
-## Getting Started
+## Tech Stack & Packages
 
-This project is a starting point for a Flutter application.
+- 🚀 **Flutter**  
+  UI framework for building natively compiled applications for mobile, web, and desktop from a single codebase.
 
-A few resources to get you started if this is your first Flutter project:
+- 🗄️ **Isar**  
+  A high-performance NoSQL local database optimized for Flutter apps, used for storing ToDo tasks efficiently on device.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- 📂 **Path Provider**  
+  Provides platform-specific locations to store data, such as the app’s documents directory, used here for locating storage path for Isar database.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 🧩 **Flutter BLoC**  
+  State management library implementing the BLoC (Business Logic Component) pattern to separate presentation and business logic cleanly.
+
+## Layer Details:
+
+- **Presentation Layer**: Flutter UI components, BLoC state management  
+- **Domain Layer**: Business logic, use cases, entities, and repository interfaces  
+- **Data Layer**: API calls, local storage, repository implementations
+
+## 🚀 Getting Started
+
+Follow these steps to run the Flutter app:
+
+1. **Install dependencies**  
+   Run the following command to install all required packages:  
+   `flutter pub get`
+
+2. **Run the app**  
+   Launch the application using:  
+   `flutter run`
+
+  https://github.com/user-attachments/assets/23e18f87-ef60-4499-8785-e2103dbf2969
